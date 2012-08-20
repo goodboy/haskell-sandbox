@@ -1,4 +1,4 @@
-mean :: (Fractional b) =>  [b] -> b
+mean :: (Floating b) =>  [b] -> b
 mean [] = error "passed an empty list"
 mean x = sum x / (fromIntegral (length x))
 
@@ -9,6 +9,7 @@ rms x = sqrt (mean (map (**2) x))
 db :: (Floating a) => [a] -> a
 db (x:[]) = 20 * logBase 10 (x)
 db x = 20 * logBase 10 (rms x)
+
 
 innerProduct :: (Num a) => [a] -> [a] -> a
 innerProduct _ [] = 0
